@@ -13,3 +13,9 @@ export const selectIsLoginFailed = createSelector(
   selectAuth,
   (state: AuthState) => state.isLoginFailed
 );
+
+export const selectAuthState = createSelector(
+  selectAuth,
+  (state: AuthState) => state
+);
+

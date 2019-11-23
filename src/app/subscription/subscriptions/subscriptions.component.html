@@ -1,0 +1,6 @@
+<h1>My Subscriptions:</h1>
+<div *ngFor="let subscription of (subscriptions$ | async)">
+  <p>{{subscription.id}}</p>
+  <p>{{subscription.externalSystemId}}</p>
+  <p>{{subscription.clubId}}</p>
+</div>
