@@ -10,9 +10,10 @@ import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import { StoreModule } from '@ngrx/store';
 import { reducers, metaReducers } from './reducers';
 import { EffectsModule } from '@ngrx/effects';
-import { AppEffects } from './app.effects';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { environment } from '../environments/environment';
+import {AuthEffects} from "./auth/auth.effects";
+import {HttpClientModule} from "@angular/common/http";
 
 @NgModule({
   declarations: [
@@ -22,6 +23,7 @@ import { environment } from '../environments/environment';
   imports: [
     BrowserModule,
     AppRoutingModule,
+    HttpClientModule,
     BrowserAnimationsModule,
     MatFormFieldModule,
     MatInputModule,
@@ -37,7 +39,7 @@ import { environment } from '../environments/environment';
         strictActionSerializability: true,
       }
     }),
-    EffectsModule.forRoot([AppEffects]),
+    EffectsModule.forRoot([AuthEffects]),
     StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: environment.production })
   ],
   providers: [],
