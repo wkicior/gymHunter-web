@@ -17,6 +17,7 @@ import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
 import { SubscriptionsComponent } from './subscription/subscriptions/subscriptions.component';
 import {SubscriptionsEffects} from "./subscription/subscriptions.effects";
 import {AuthInterceptor} from "./auth/auth.interceptor";
+import {storageMetaReducer} from "./reducers/storage.metareducer";
 
 @NgModule({
   declarations: [
@@ -35,7 +36,7 @@ import {AuthInterceptor} from "./auth/auth.interceptor";
     FormsModule,
     ReactiveFormsModule,
     StoreModule.forRoot(reducers, {
-      metaReducers,
+      metaReducers: [storageMetaReducer] ,
       runtimeChecks: {
         strictStateImmutability: true,
         strictActionImmutability: true,
