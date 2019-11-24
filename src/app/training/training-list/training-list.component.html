@@ -1,1 +1,13 @@
-<p>training-list works!</p>
+<h1>Trainings</h1>
+<h2>{{currentDate$ | async}}</h2>
+<button mat-raised-button color="secondary" (click)="shiftDayOffset(-7)">Previous week</button>
+<button mat-raised-button color="secondary" (click)="shiftDayOffset(-1)">Previous day</button>
+<button mat-raised-button color="secondary" (click)="shiftDayOffset(1)">Next day</button>
+<button mat-raised-button color="secondary" (click)="shiftDayOffset(7)">Next week</button>
+<div class="training" *ngFor="let training of (trainings$ | async)">
+  <p>{{training.activity.name}}</p>
+  <p>{{training.trainer.name}}</p>
+  <p>{{training.start_date}}</p>
+  <p>{{training.id}}</p>
+  <button mat-raised-button color="secondary">Subscribe</button>
+</div>

@@ -2,7 +2,7 @@ import {Injectable} from "@angular/core";
 import {Actions, Effect, ofType} from "@ngrx/effects";
 import {Store} from "@ngrx/store";
 import {State} from "../reducers";
-import {switchMap, tap} from "rxjs/operators";
+import {switchMap} from "rxjs/operators";
 import {of} from "rxjs";
 
 import {
@@ -22,7 +22,6 @@ export class SubscriptionsEffects {
   @Effect()
   getAllSubscriptions$ = this.actions$.pipe(
     ofType<GetAllSubscriptions>(SubscriptionsAction.GetAllSubscriptions),
-    tap(() => console.log('bla')),
     switchMap(() => this.subscriptionsService.getAllSubscriptions()),
     switchMap((subs) => of (new GetAllSubscriptionsSuccess(subs)))
   )

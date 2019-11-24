@@ -20,6 +20,7 @@ import {AuthInterceptor} from "./auth/auth.interceptor";
 import {storageMetaReducer} from "./reducers/storage.metareducer";
 import {GymHunterEndpointUrlEnv} from "./app.config";
 import { TrainingListComponent } from './training/training-list/training-list.component';
+import {TrainingsEffects} from "./training/trainings.effects";
 
 @NgModule({
   declarations: [
@@ -47,7 +48,7 @@ import { TrainingListComponent } from './training/training-list/training-list.co
         strictActionSerializability: true,
       }
     }),
-    EffectsModule.forRoot([AuthEffects, SubscriptionsEffects]),
+    EffectsModule.forRoot([AuthEffects, SubscriptionsEffects, TrainingsEffects]),
     StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: environment.production })
   ],
   providers: [

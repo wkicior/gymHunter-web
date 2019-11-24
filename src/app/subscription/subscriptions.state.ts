@@ -1,6 +1,5 @@
 import {ITrainingHuntingSubscription} from "./training-hunting-subscription";
 
-
 export interface SubscriptionsState {
   subscriptions: ITrainingHuntingSubscription[];
 }
