@@ -18,12 +18,15 @@ import { SubscriptionsComponent } from './subscription/subscriptions/subscriptio
 import {SubscriptionsEffects} from "./subscription/subscriptions.effects";
 import {AuthInterceptor} from "./auth/auth.interceptor";
 import {storageMetaReducer} from "./reducers/storage.metareducer";
+import {GymHunterEndpointUrlEnv} from "./app.config";
+import { TrainingListComponent } from './training/training-list/training-list.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
-    SubscriptionsComponent
+    SubscriptionsComponent,
+    TrainingListComponent
   ],
   imports: [
     BrowserModule,
@@ -48,6 +51,7 @@ import {storageMetaReducer} from "./reducers/storage.metareducer";
     StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: environment.production })
   ],
   providers: [
+    GymHunterEndpointUrlEnv,
     {
       provide: HTTP_INTERCEPTORS,
       useClass: AuthInterceptor,
