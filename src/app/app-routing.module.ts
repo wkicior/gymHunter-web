@@ -10,7 +10,7 @@ const routes: Routes = [
   { path: '', component: LoginComponent },
   { path: 'subscriptions', component: SubscriptionsComponent },
   { path: 'trainings', component: TrainingListComponent },
-  { path: 'trainings/:trainingKey/subscribe', component: NewSubscriptionComponent },
+  { path: 'trainings/:trainingId/subscribe', component: NewSubscriptionComponent },
   { path: '**', redirectTo: '' },
 ];
 

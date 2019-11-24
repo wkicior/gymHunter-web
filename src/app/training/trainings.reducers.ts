@@ -12,6 +12,12 @@ export const trainingsReducers = (
         trainings: action.trainings
       }
     }
+    case TrainingsAction.GetTrainingSuccess: {
+      return {
+        ...state,
+        selectedTraining: action.training
+      }
+    }
     default:
       return state;
   }

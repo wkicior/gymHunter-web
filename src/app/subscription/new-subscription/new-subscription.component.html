@@ -1,1 +1,6 @@
 <p>new-subscription works!</p>
+<div *ngIf="training$ | async as training">
+  <p>{{training.activity.name}}</p>
+  <p>{{training.trainer.name}}</p>
+  <p>{{training.start_date}}</p>
+</div>

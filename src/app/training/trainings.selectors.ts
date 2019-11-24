@@ -9,6 +9,11 @@ export const selectTrainings = createSelector(
   (state: TrainingsState) => state.trainings
 );
 
+export const selectSelectedTraining = createSelector(
+  selectTrainingsState,
+  (state: TrainingsState) => state.selectedTraining
+);
+
 export const selectClubId = createSelector(
   selectTrainingsState,
   (state: TrainingsState) => state.clubId

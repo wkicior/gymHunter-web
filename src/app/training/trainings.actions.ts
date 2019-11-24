@@ -3,7 +3,9 @@ import {ITraining} from "./training";
 
 export enum TrainingsAction {
   GetTrainings = '[Trainings] Get Trainings',
-  GetTrainingsSuccess = '[Trainings] Get Trainings Success'
+  GetTrainingsSuccess = '[Trainings] Get Trainings Success',
+  GetTraining = '[Trainings] Get Training',
+  GetTrainingSuccess = '[Trainings] Get Training Success',
 }
 
 export class GetTrainings implements Action {
@@ -16,4 +18,14 @@ export class GetTrainingsSuccess implements Action {
   constructor(public trainings: ITraining[]) {}
 }
 
-export type TrainingsActions = GetTrainings | GetTrainingsSuccess
+export class GetTraining implements Action {
+  public readonly type = TrainingsAction.GetTraining;
+  constructor(public id: number) {}
+}
+
+export class GetTrainingSuccess implements Action {
+  public readonly type = TrainingsAction.GetTrainingSuccess;
+  constructor(public training: ITraining) {}
+}
+
+export type TrainingsActions = GetTrainings | GetTrainingsSuccess | GetTraining | GetTrainingSuccess
