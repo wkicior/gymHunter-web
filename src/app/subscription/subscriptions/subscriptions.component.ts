@@ -3,6 +3,7 @@ import {Store} from "@ngrx/store";
 import {State} from "../../reducers";
 import {GetAllSubscriptions} from "../subscriptions.actions";
 import {selectAllSubscriptions} from "../subscriptions.selectors";
+import {selectClubId} from "../../training/trainings.selectors";
 
 @Component({
   selector: 'app-subscriptions',

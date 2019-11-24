@@ -21,13 +21,15 @@ import {storageMetaReducer} from "./reducers/storage.metareducer";
 import {GymHunterEndpointUrlEnv} from "./app.config";
 import { TrainingListComponent } from './training/training-list/training-list.component';
 import {TrainingsEffects} from "./training/trainings.effects";
+import { NewSubscriptionComponent } from './subscription/new-subscription/new-subscription.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     SubscriptionsComponent,
-    TrainingListComponent
+    TrainingListComponent,
+    NewSubscriptionComponent
   ],
   imports: [
     BrowserModule,

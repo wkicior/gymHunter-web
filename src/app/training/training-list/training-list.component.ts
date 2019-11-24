@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {Store} from "@ngrx/store";
 import {State} from "../../reducers";
-import {selectTrainings} from "../trainings.selectors";
+import {selectClubId, selectTrainings} from "../trainings.selectors";
 import {GetTrainings} from "../trainings.actions";
 import {DateService} from "../../time/date.service";
 import {map} from "rxjs/operators";
@@ -27,7 +27,8 @@ export class TrainingListComponent implements OnInit {
   );
 
   ngOnInit() {
-    this.dayOffset$.subscribe(dayShift => {
+    this.dayOffset$.pipe(
+    ).subscribe(dayShift => {
       let startDateStr = this.dateService.getDateWithDaysOffset(dayShift);
       let endDateStr = this.dateService.getDateWithDaysOffset(dayShift + 2);
       this.store.dispatch(new GetTrainings(startDateStr, endDateStr));
@@ -37,5 +38,4 @@ export class TrainingListComponent implements OnInit {
   shiftDayOffset(dayShift: number) {
     this.dayOffset$.next(this.dayOffset$.value + dayShift);
   }
-
 }

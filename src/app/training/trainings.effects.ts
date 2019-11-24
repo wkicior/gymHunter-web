@@ -1,11 +1,12 @@
 import {Injectable} from "@angular/core";
 import {Actions, Effect, ofType} from "@ngrx/effects";
-import {Store} from "@ngrx/store";
+import {select, Store} from "@ngrx/store";
 import {State} from "../reducers";
-import {switchMap} from "rxjs/operators";
+import {switchMap, tap, withLatestFrom} from "rxjs/operators";
 import {of} from "rxjs";
 import {GetTrainings, GetTrainingsSuccess, TrainingsAction} from "./trainings.actions";
 import {TrainingsService} from "./trainings.service";
+import {selectClubId} from "./trainings.selectors";
 
 @Injectable()
 export class TrainingsEffects {
@@ -18,7 +19,8 @@ export class TrainingsEffects {
   @Effect()
   getAllSubscriptions$ = this.actions$.pipe(
     ofType<GetTrainings>(TrainingsAction.GetTrainings),
-    switchMap(({fromDate, toDate}) => this.trainingsService.getTrainings(fromDate, toDate)),
+    withLatestFrom(this.store.pipe(select(selectClubId))),
+    switchMap(([{fromDate, toDate}, clubId]) => this.trainingsService.getTrainings(clubId, fromDate, toDate)),
     switchMap((trainings) => of (new GetTrainingsSuccess(trainings)))
   )
 }

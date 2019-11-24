@@ -1,6 +1,5 @@
 import {Action} from "@ngrx/store";
 import {ITraining} from "./training";
-import {Moment} from "moment";
 
 export enum TrainingsAction {
   GetTrainings = '[Trainings] Get Trainings',
