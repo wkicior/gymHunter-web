@@ -15,4 +15,8 @@ export class DateService {
   getDateWithDaysOffsetDisplay(dayOffset: number): string {
     return moment().add(dayOffset, 'days').format("dddd Do MMM YYYY");
   }
+
+  getHoursBeforeDate(start_date: Date, autoDeadlineBeforeHours: Number): string {
+    return moment(start_date).subtract(autoDeadlineBeforeHours.valueOf(), 'hours').format("YYYY-MM-DDThh:mm:ssZZ")
+  }
 }

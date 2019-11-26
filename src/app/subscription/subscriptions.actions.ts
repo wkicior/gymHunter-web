@@ -3,7 +3,9 @@ import {ITrainingHuntingSubscription} from "./training-hunting-subscription";
 
 export enum SubscriptionsAction {
   GetAllSubscriptions = '[Subscription] Get All',
-  GetAllSubscriptionsSuccess = '[Subscription] Get All Success'
+  GetAllSubscriptionsSuccess = '[Subscription] Get All Success',
+  Subscribe = '[Subscription] Subscribe',
+  SubscribeSuccess = '[Subscription] Subscribe Success'
 }
 
 export class GetAllSubscriptions implements Action {
@@ -15,4 +17,14 @@ export class GetAllSubscriptionsSuccess implements Action {
   constructor(public subscriptions: ITrainingHuntingSubscription[]) {}
 }
 
-export type SubscriptionsActions = GetAllSubscriptions | GetAllSubscriptionsSuccess
+export class Subscribe implements Action {
+  public readonly type = SubscriptionsAction.Subscribe;
+  constructor(public autoBookingDeadline: string) {}
+}
+
+export class SubscribeSuccess implements Action {
+  public readonly type = SubscriptionsAction.SubscribeSuccess
+  constructor(public aubscription: ITrainingHuntingSubscription) {}
+}
+
+export type SubscriptionsActions = GetAllSubscriptions | GetAllSubscriptionsSuccess | Subscribe | SubscribeSuccess

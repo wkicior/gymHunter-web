@@ -12,6 +12,18 @@ export const subscriptionsReducers = (
         subscriptions: action.subscriptions
       }
     }
+    case SubscriptionsAction.Subscribe: {
+      return {
+        ...state,
+        createdSubscription: null
+      }
+    }
+    case SubscriptionsAction.SubscribeSuccess: {
+      return {
+        ...state,
+        createdSubscription: action.aubscription
+      }
+    }
     default:
       return state;
   }

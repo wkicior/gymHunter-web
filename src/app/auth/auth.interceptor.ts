@@ -4,7 +4,7 @@ import {State} from "../reducers";
 import {select, Store} from "@ngrx/store";
 import {Observable, of} from "rxjs";
 import {selectAuthState} from "./auth.selectors";
-import {switchMap} from "rxjs/operators";
+import {switchMap, take} from "rxjs/operators";
 import {GymHunterEndpointUrl} from "../app.config";
 
 @Injectable()
@@ -14,6 +14,7 @@ export class AuthInterceptor implements HttpInterceptor {
 
   intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     return this.store.pipe(select(selectAuthState)).pipe(
+      take(1),
       switchMap(authState => {
         if (!authState.isAuthenticated || !request.url.startsWith(this.endpointUrl)) {
           return next.handle(request);

@@ -5,7 +5,7 @@ import {select, Store} from "@ngrx/store";
 import {Login} from "../auth.actions";
 import {selectIsAuthenticated, selectIsLoginFailed} from "../auth.selectors";
 import {Router} from "@angular/router";
-import {filter} from "rxjs/operators";
+import {filter, take} from "rxjs/operators";
 
 @Component({
   selector: 'app-login',
@@ -40,7 +40,8 @@ export class LoginComponent implements OnInit {
 
   private navigateToSubscriptionsOnAuthenticated() {
     this.isAuthenticated$.pipe(
-      filter(a => a))
+      filter(a => a),
+      take(1))
       .subscribe(() =>
         this.router.navigate(['/subscriptions'])
       );
