@@ -33,7 +33,8 @@ export const subscriptionsReducers = (
     case SubscriptionsAction.DeleteSubscriptionSuccess: {
       return {
         ...state,
-        subscriptions: state.subscriptions.filter(s => s.id !== action.subscription.id)
+        subscriptions: state.subscriptions.filter(s => s.id !== action.subscription.id),
+        selectedSubscription: state.selectedSubscription.id === action.subscription.id ? null : state.selectedSubscription
       }
     }
     default:

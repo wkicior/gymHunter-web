@@ -24,12 +24,17 @@ export class EditSubscriptionComponent implements OnInit {
   }
 
   private navigateToSubscriptionsOnSuccessfullyDeletedSubscription() {
-    this.store.pipe(select(selectAllSubscriptions)).pipe( ///TODO: selector with param?
-      withLatestFrom(this.subscription$),
-      tap(x => console.log('navigate to' + JSON.stringify(x))),
-      map(([all, current]) => all.indexOf(current) == -1),
-      filter(removed => removed === true)
-    ).subscribe(() => this.router.navigate(['/subscriptions']));
+    // this.store.pipe(select(selectAllSubscriptions)).pipe( ///TODO: selector with param?
+    //   withLatestFrom(this.subscription$),
+    //   tap(x => console.log('navigate to' + JSON.stringify(x))),
+    //   map(([all, current]) => all.indexOf(current) == -1),
+    //   filter(removed => removed === true)
+    // ).subscribe(() => this.router.navigate(['/subscriptions']));
+    this.subscription$.pipe(
+      filter(s => s === null)
+    ).subscribe(
+      () => this.router.navigate(['/subscriptions'])
+    )
   }
 
   delete(subscription: ITrainingHuntingSubscription) {

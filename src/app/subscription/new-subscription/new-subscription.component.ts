@@ -21,12 +21,13 @@ export class NewSubscriptionComponent implements OnInit {
 
   training$ = this.store.select(selectSelectedTraining);
   successfulySubscribed$ = this.store.pipe(select(createdSubscription)).pipe(
-    filter(s => s !== null)
+    filter(s => s !== null),
+    filter(s => s.externalSystemId.toString() === this.route.snapshot.params.trainingId),
   );
   autoDeadlineBeforeHours: Number;
 
   ngOnInit() {
-    this.store.dispatch(new GetTraining(this.route.snapshot.params.trainingId))
+    this.store.dispatch(new GetTraining(this.route.snapshot.params.trainingId));
     this.successfulySubscribed$.subscribe(() => this.router.navigate(['/subscriptions']));
   }
 
