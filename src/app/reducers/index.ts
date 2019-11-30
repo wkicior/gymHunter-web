@@ -12,6 +12,7 @@ import {initialSubscriptionsState, SubscriptionsState} from "../subscription/sub
 import {subscriptionsReducers} from "../subscription/subscriptions.reducers";
 import {initialTrainingsState, TrainingsState} from "../training/trainings.state";
 import {trainingsReducers} from "../training/trainings.reducers";
+import {InjectionToken} from "@angular/core";
 
 export interface State {
   authState: AuthState;
@@ -30,5 +31,7 @@ export const reducers: ActionReducerMap<State> = {
   subscriptionsState: subscriptionsReducers,
   trainingsState: trainingsReducers
 };
+
+export const ROOT_REDUCER = new InjectionToken<any>('Root Reducer');
 
 export const metaReducers: MetaReducer<State>[] = !environment.production ? [] : [];

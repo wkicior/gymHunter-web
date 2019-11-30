@@ -8,7 +8,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatButtonModule, MatFormFieldModule, MatInputModule, MatSelectModule} from "@angular/material";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import { StoreModule } from '@ngrx/store';
-import { reducers, metaReducers } from './reducers';
+import {reducers, ROOT_REDUCER} from './reducers';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { environment } from '../environments/environment';
@@ -44,7 +44,7 @@ import { EditSubscriptionComponent } from './subscription/edit-subscription/edit
     MatButtonModule,
     FormsModule,
     ReactiveFormsModule,
-    StoreModule.forRoot(reducers, {
+    StoreModule.forRoot(ROOT_REDUCER, {
       metaReducers: [storageMetaReducer] ,
       runtimeChecks: {
         strictStateImmutability: true,
@@ -62,7 +62,10 @@ import { EditSubscriptionComponent } from './subscription/edit-subscription/edit
       provide: HTTP_INTERCEPTORS,
       useClass: AuthInterceptor,
       multi: true
-    }
+    },
+    {
+      provide: ROOT_REDUCER,
+      useValue: reducers},
   ],
   bootstrap: [AppComponent]
 })
