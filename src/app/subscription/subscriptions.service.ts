@@ -17,8 +17,11 @@ export class SubscriptionsService {
   }
 
   subscribe(request: SubscriptionRequest): Observable<ITrainingHuntingSubscription> {
-    console.log("posing" + JSON.stringify(request));
     return this.http.post<ITrainingHuntingSubscription>(`${this.endpointUrl}/training-hunting-subscriptions`, request);
+  }
+
+  deleteSubscription(id: string): Observable<ITrainingHuntingSubscription> {
+    return this.http.delete<ITrainingHuntingSubscription>(`${this.endpointUrl}/training-hunting-subscriptions/${id}`);
   }
 }
 

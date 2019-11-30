@@ -1,0 +1,10 @@
+<h1>Edit</h1>
+<div class="subscription" *ngIf="(subscription$ | async) as subscription">
+  <p>{{subscription.externalSystemId}}</p>
+  <p>{{subscription.huntingDeadline}}</p>
+  <p *ngIf="subscription.autoBookingDateTime">Autobooked</p>
+  <p *ngIf="subscription.notificationOnSlotsAvailableSentDateTime">Notified</p>
+  <button mat-raised-button color="primary" (click)="delete(subscription)">Delete</button>
+</div>
+
+

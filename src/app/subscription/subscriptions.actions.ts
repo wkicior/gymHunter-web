@@ -4,8 +4,12 @@ import {ITrainingHuntingSubscription} from "./training-hunting-subscription";
 export enum SubscriptionsAction {
   GetAllSubscriptions = '[Subscription] Get All',
   GetAllSubscriptionsSuccess = '[Subscription] Get All Success',
+  GetSubscription = '[Subscription] Get Subscription',
+  GetSubscriptionSuccess = '[Subscription] Get Subscription Success',
   Subscribe = '[Subscription] Subscribe',
-  SubscribeSuccess = '[Subscription] Subscribe Success'
+  SubscribeSuccess = '[Subscription] Subscribe Success',
+  DeleteSubscription = '[Subscription] Delete',
+  DeleteSubscriptionSuccess = '[Subscription] Delete Success'
 }
 
 export class GetAllSubscriptions implements Action {
@@ -17,6 +21,16 @@ export class GetAllSubscriptionsSuccess implements Action {
   constructor(public subscriptions: ITrainingHuntingSubscription[]) {}
 }
 
+export class GetSubscription implements Action {
+  public readonly type = SubscriptionsAction.GetSubscription;
+  constructor(public id: string) {}
+}
+
+export class GetSubscriptionSuccess implements Action {
+  public readonly type = SubscriptionsAction.GetSubscriptionSuccess;
+  constructor(public subscription: ITrainingHuntingSubscription) {}
+}
+
 export class Subscribe implements Action {
   public readonly type = SubscriptionsAction.Subscribe;
   constructor(public autoBookingDeadline: string) {}
@@ -24,7 +38,25 @@ export class Subscribe implements Action {
 
 export class SubscribeSuccess implements Action {
   public readonly type = SubscriptionsAction.SubscribeSuccess
-  constructor(public aubscription: ITrainingHuntingSubscription) {}
+  constructor(public subscription: ITrainingHuntingSubscription) {}
 }
 
-export type SubscriptionsActions = GetAllSubscriptions | GetAllSubscriptionsSuccess | Subscribe | SubscribeSuccess
+export class DeleteSubscription implements Action {
+  public readonly type = SubscriptionsAction.DeleteSubscription;
+  constructor(public id: string) {}
+}
+
+export class DeleteSubscriptionSuccess implements Action {
+  public readonly type = SubscriptionsAction.DeleteSubscriptionSuccess;
+  constructor(public subscription: ITrainingHuntingSubscription) {}
+}
+
+export type SubscriptionsActions =
+  GetAllSubscriptions
+  | GetAllSubscriptionsSuccess
+  | GetSubscription
+  | GetSubscriptionSuccess
+  | Subscribe
+  | SubscribeSuccess
+  | DeleteSubscription
+  | DeleteSubscriptionSuccess

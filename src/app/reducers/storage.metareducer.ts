@@ -8,7 +8,7 @@ function getSavedState(localStorageKey: string): any {
   return JSON.parse(localStorage.getItem(localStorageKey));
 }
 
-const stateKeys = ['authState.username', 'authState.password', 'authState.isAuthenticated', 'trainingsState.trainings'];
+const stateKeys = ['authState.username', 'authState.password', 'authState.isAuthenticated', 'trainingsState.trainings', 'subscriptionsState'];
 const localStorageKey = '__app_storage__';
 
 export function storageMetaReducer<S, A extends Action = Action> (reducer: ActionReducer<S, A>) {

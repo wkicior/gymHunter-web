@@ -12,6 +12,12 @@ export const subscriptionsReducers = (
         subscriptions: action.subscriptions
       }
     }
+    case SubscriptionsAction.GetSubscriptionSuccess: {
+      return {
+        ...state,
+        selectedSubscription: action.subscription
+      }
+    }
     case SubscriptionsAction.Subscribe: {
       return {
         ...state,
@@ -21,7 +27,13 @@ export const subscriptionsReducers = (
     case SubscriptionsAction.SubscribeSuccess: {
       return {
         ...state,
-        createdSubscription: action.aubscription
+        createdSubscription: action.subscription
+      }
+    }
+    case SubscriptionsAction.DeleteSubscriptionSuccess: {
+      return {
+        ...state,
+        subscriptions: state.subscriptions.filter(s => s.id !== action.subscription.id)
       }
     }
     default:

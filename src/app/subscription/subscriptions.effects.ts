@@ -2,17 +2,19 @@ import {Injectable} from "@angular/core";
 import {Actions, Effect, ofType} from "@ngrx/effects";
 import {Store} from "@ngrx/store";
 import {State} from "../reducers";
-import {map, switchMap, withLatestFrom} from "rxjs/operators";
-import {of} from "rxjs";
+import {map, switchMap, tap, withLatestFrom} from "rxjs/operators";
+import {of, throwError} from "rxjs";
 
 import {
+  DeleteSubscription, DeleteSubscriptionSuccess,
   GetAllSubscriptions,
-  GetAllSubscriptionsSuccess, Subscribe, SubscribeSuccess,
+  GetAllSubscriptionsSuccess, GetSubscription, GetSubscriptionSuccess, Subscribe, SubscribeSuccess,
   SubscriptionsAction
 } from "./subscriptions.actions";
 import {SubscriptionsService} from "./subscriptions.service";
 import {selectClubId, selectSelectedTraining} from "../training/trainings.selectors";
 import {SubscriptionRequest} from "./subscription-request";
+import {selectAllSubscriptions} from "./subscriptions.selectors";
 
 
 @Injectable()
@@ -29,6 +31,22 @@ export class SubscriptionsEffects {
     switchMap(() => this.subscriptionsService.getAllSubscriptions()),
     switchMap((subs) => of (new GetAllSubscriptionsSuccess(subs)))
   );
+
+  @Effect()
+  getSubscription$ = this.actions$.pipe(
+    ofType<GetSubscription>(SubscriptionsAction.GetSubscription),
+    withLatestFrom(this.store.select(selectAllSubscriptions)),
+    map(([{id}, subs]) => subs.filter(s => s.id === id)),
+    map(s => s.length != 1 ? throwError(`Could not find subscription`): new GetSubscriptionSuccess(s[0]))
+  );
+
+  @Effect()
+  deleteSubscription$ = this.actions$.pipe(
+    ofType<DeleteSubscription>(SubscriptionsAction.DeleteSubscription),
+    switchMap((subscription) => this.subscriptionsService.deleteSubscription(subscription.id)),
+    map(deletedSubscription => new DeleteSubscriptionSuccess(deletedSubscription))
+  );
+
 
   @Effect()
   createNewSubscription = this.actions$.pipe(

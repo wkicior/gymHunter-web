@@ -22,6 +22,7 @@ import {GymHunterEndpointUrlEnv} from "./app.config";
 import { TrainingListComponent } from './training/training-list/training-list.component';
 import {TrainingsEffects} from "./training/trainings.effects";
 import { NewSubscriptionComponent } from './subscription/new-subscription/new-subscription.component';
+import { EditSubscriptionComponent } from './subscription/edit-subscription/edit-subscription.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { NewSubscriptionComponent } from './subscription/new-subscription/new-su
     LoginComponent,
     SubscriptionsComponent,
     TrainingListComponent,
-    NewSubscriptionComponent
+    NewSubscriptionComponent,
+    EditSubscriptionComponent
   ],
   imports: [
     BrowserModule,

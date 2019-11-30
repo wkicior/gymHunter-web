@@ -1,5 +1,5 @@
 <h1>My Subscriptions:</h1>
-<div class="subscription" *ngFor="let subscription of (subscriptions$ | async)">
+<div class="subscription" *ngFor="let subscription of (subscriptions$ | async)" (click)="subscriptionSelected(subscription.id)">
   <p>{{subscription.externalSystemId}}</p>
   <p>{{subscription.huntingDeadline}}</p>
   <p *ngIf="subscription.autoBookingDateTime">Autobooked</p>

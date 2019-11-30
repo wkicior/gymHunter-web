@@ -9,6 +9,11 @@ export const selectAllSubscriptions = createSelector(
   (state: SubscriptionsState) => state.subscriptions
 );
 
+export const selectSelectedSubscriptions = createSelector(
+  selectSubscriptions,
+  (state: SubscriptionsState) => state.selectedSubscription
+);
+
 export const createdSubscription = createSelector(
   selectSubscriptions,
   (state: SubscriptionsState) => state.createdSubscription
