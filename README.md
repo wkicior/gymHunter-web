@@ -1,6 +1,5 @@
 # GymHunterWeb
-
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.3.19.
+The Angular frontend for GymHunter - platform for tracking trainings on Gymsteer.
 
 ## Development server
 
@@ -13,6 +12,12 @@ Run `ng generate component component-name` to generate a new component. You can 
 ## Build
 
 Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+
+## Build (prod)
+run `ng build --prod` to build the project with production profile
+
+## Deploy (firebase)
+run `firebase deploy` to deploy the project to firebase hosting 
 
 ## Running unit tests
 
