@@ -1,23 +1,25 @@
-<div *ngIf="training$ | async as training">
-  <p>{{training.activity.name}}</p>
-  <p>{{training.trainer.name}}</p>
-  <p>{{training.start_date}}</p>
-  <mat-form-field>
-    <mat-label>AutoBooking deadline before training start</mat-label>
-    <mat-select [(value)]="autoDeadlineBeforeHours">
-      <mat-option>No autobooking</mat-option>
-      <mat-option value="1">1h</mat-option>
-      <mat-option value="2">2h</mat-option>
-      <mat-option value="4">4h</mat-option>
-      <mat-option value="8">8h</mat-option>
-      <mat-option value="16">16h</mat-option>
-      <mat-option value="24">1d</mat-option>
-      <mat-option value="48">2d</mat-option>
-      <mat-option value="72">3d</mat-option>
-      <mat-option value="96">4d</mat-option>
-      <mat-option value="120">5d</mat-option>
-      <mat-option value="144">6d</mat-option>`
-    </mat-select>
-  </mat-form-field>
-  <button mat-raised-button color="primary" (click)="subscribe(training)">Subscribe</button>
-</div>
+<section>
+  <div *ngIf="training$ | async as training">
+    <p>{{training.activity.name}}</p>
+    <p>{{training.trainer.name}}</p>
+    <p>{{training.start_date}}</p>
+    <mat-form-field>
+      <mat-label>AutoBooking deadline before training start</mat-label>
+      <mat-select [(value)]="autoDeadlineBeforeHours">
+        <mat-option>No autobooking</mat-option>
+        <mat-option value="1">1h</mat-option>
+        <mat-option value="2">2h</mat-option>
+        <mat-option value="4">4h</mat-option>
+        <mat-option value="8">8h</mat-option>
+        <mat-option value="16">16h</mat-option>
+        <mat-option value="24">1d</mat-option>
+        <mat-option value="48">2d</mat-option>
+        <mat-option value="72">3d</mat-option>
+        <mat-option value="96">4d</mat-option>
+        <mat-option value="120">5d</mat-option>
+        <mat-option value="144">6d</mat-option>`
+      </mat-select>
+    </mat-form-field>
+    <button mat-raised-button color="primary" (click)="subscribe(training)">Subscribe</button>
+  </div>
+</section>

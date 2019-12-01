@@ -1,4 +1,5 @@
 import {
+  Action,
   ActionReducer,
   ActionReducerMap,
   createFeatureSelector,
@@ -34,4 +35,31 @@ export const reducers: ActionReducerMap<State> = {
 
 export const ROOT_REDUCER = new InjectionToken<any>('Root Reducer');
 
-export const metaReducers: MetaReducer<State>[] = !environment.production ? [] : [];
+// export enum RootAction {
+//   Reset = '[Root] Reset',
+// }
+//
+// export class Reset implements Action {
+//   public readonly type = RootAction.Reset;
+//   constructor() {}
+// }
+//
+//
+//
+// export type RootActions = Reset;
+//
+// export const rootReducers = (
+//   state = initialAuthState,
+//   action: RootActions
+// ): AuthState => {
+//   switch(action.type) {
+//     case RootAction.Reset: {
+//       return {
+//         initialState
+//       }
+//     }
+//     default:
+//       return state;
+//   }
+// };
+

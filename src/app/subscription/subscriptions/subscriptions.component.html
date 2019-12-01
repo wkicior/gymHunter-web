@@ -1,8 +1,9 @@
-<h1>My Subscriptions:</h1>
-<div class="subscription" *ngFor="let subscription of (subscriptions$ | async)" (click)="subscriptionSelected(subscription.id)">
-  <p>{{subscription.externalSystemId}}</p>
-  <p>{{subscription.huntingDeadline}}</p>
-  <p *ngIf="subscription.autoBookingDateTime">Autobooked</p>
-  <p *ngIf="subscription.notificationOnSlotsAvailableSentDateTime">Notified</p>
-</div>
-<button mat-raised-button color="primary" routerLink="/trainings">Add new</button>
+<section>
+  <h1>My Subscriptions:</h1>
+  <div class="subscription" *ngFor="let subscription of (subscriptions$ | async)" (click)="subscriptionSelected(subscription.id)">
+    <p>{{subscription.huntingDeadline}}</p>
+    <p *ngIf="subscription.autoBookingDateTime">Autobooked</p>
+    <p *ngIf="subscription.notificationOnSlotsAvailableSentDateTime">Notified</p>
+  </div>
+  <button mat-raised-button color="primary" routerLink="/trainings">Add new</button>
+</section>

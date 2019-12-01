@@ -1,0 +1,12 @@
+.training:nth-child(even) {
+  background-color: #4f4f4f;
+}
+
+.date-selection {
+  display: flex;
+  justify-content: center
+}
+
+.date-selection button {
+  margin: 5px 0px;
+}

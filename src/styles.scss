@@ -2,8 +2,20 @@
 
 html, body { height: 100%; }
 body {
-  margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif;
+  margin: 0px; font-family: Roboto, "Helvetica Neue", sans-serif;
+  font-size: 16px;
+  background-color: #494949;
+  color: white;
 }
+
+section {
+  margin: 10px;
+}
+
+h1 {
+  font-size: 22px;
+}
+
 
 @media (max-width: 1000px) {
   page{

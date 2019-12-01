@@ -20,8 +20,12 @@ export function storageMetaReducer<S, A extends Action = Action> (reducer: Actio
       const savedState = getSavedState(localStorageKey);
       return merge(nextState, savedState);
     }
-    const stateToSave = pick(nextState, stateKeys);
-    setSavedState(stateToSave, localStorageKey);
+    if (state) {
+      const stateToSave = pick(nextState, stateKeys);
+      setSavedState(stateToSave, localStorageKey);
+    } else {
+      localStorage.clear();
+    }
     return nextState;
   };
 }

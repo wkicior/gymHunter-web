@@ -1,8 +1,14 @@
 .subscription {
   margin: 10px;
-  background-color: #adadad;
+  margin-top: 30px;
+  padding: 15px 5px;
+  //background-color: #adadad;
 }
 
 .subscription:hover {
-  background-color: #ffa72d;
+  background-color: #ff9800 !important;
+}
+
+.subscription:nth-child(even) {
+  background-color: #4f4f4f;
 }

@@ -28,6 +28,14 @@ export const authReducers = (
         isLoginFailed: true
       }
     }
+    case AuthAction.Logout: {
+      return {
+        ...state,
+        isAuthenticated: false,
+        username: '',
+        password: ''
+      }
+    }
     default:
       return state;
   }

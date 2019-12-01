@@ -1,0 +1,9 @@
+<div [ngClass]="isResponsive ? 'topnav responsive' : 'topnav'" id="myTopnav">
+  <a href="javascript:void(0);" class="icon" (click)="toggle()">
+    <i class="material-icons">
+      reorder
+    </i>
+  </a>
+  <a id="main-nav-item" routerLink="/" [routerLinkActiveOptions]="{ exact: true }" routerLinkActive="active">GymHunter</a>
+  <a *ngIf="(isAuthenticated$ | async)" (click)="logout()">Log out</a>
+</div>

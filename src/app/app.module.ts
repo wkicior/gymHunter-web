@@ -23,6 +23,8 @@ import { TrainingListComponent } from './training/training-list/training-list.co
 import {TrainingsEffects} from "./training/trainings.effects";
 import { NewSubscriptionComponent } from './subscription/new-subscription/new-subscription.component';
 import { EditSubscriptionComponent } from './subscription/edit-subscription/edit-subscription.component';
+import { TopNavigationComponent } from './top-navigation/top-navigation.component';
+import {clearState} from "./reducers/logout.metareducer";
 
 @NgModule({
   declarations: [
@@ -31,7 +33,8 @@ import { EditSubscriptionComponent } from './subscription/edit-subscription/edit
     SubscriptionsComponent,
     TrainingListComponent,
     NewSubscriptionComponent,
-    EditSubscriptionComponent
+    EditSubscriptionComponent,
+    TopNavigationComponent
   ],
   imports: [
     BrowserModule,
@@ -45,7 +48,7 @@ import { EditSubscriptionComponent } from './subscription/edit-subscription/edit
     FormsModule,
     ReactiveFormsModule,
     StoreModule.forRoot(ROOT_REDUCER, {
-      metaReducers: [storageMetaReducer] ,
+      metaReducers: [clearState, storageMetaReducer],
       runtimeChecks: {
         strictStateImmutability: true,
         strictActionImmutability: true,

@@ -1,20 +1,22 @@
-<div style="display: flex; justify-content: center;">
+<section style="display: flex; justify-content: center;">
   <div style="max-width: 700px;" >
+    <img id="logo" src="/assets/img/gymhunter.png" alt="logo"/>
     <form [formGroup]="loginForm" (ngSubmit)="login()">
-      <div>
+      <div style="display: flex; justify-content: center">
         <mat-form-field>
           <input matInput placeholder="Username" formControlName="username" [errorStateMatcher]="loginForm.loginFailedErrorStateMatcher">
           <mat-error *ngIf="loginForm.hasError('loginFailed')">Incorrect username or password</mat-error>
         </mat-form-field>
       </div>
-      <div>
+      <div style="display: flex; justify-content: center">
         <mat-form-field>
           <input matInput type="password" placeholder="Password" required formControlName="password">
         </mat-form-field>
       </div>
-
-      <button mat-raised-button color="primary" type="submit" [disabled]="!loginForm.valid">Log in</button>
+      <div style="display: flex; justify-content: center">
+        <button mat-raised-button color="primary" type="submit" [disabled]="!loginForm.valid">Log in</button>
+      </div>
     </form>
   </div>
-</div>
+</section>
 
