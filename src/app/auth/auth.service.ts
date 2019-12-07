@@ -23,7 +23,7 @@ export class AuthService {
         if (error instanceof HttpErrorResponse && error.status === 401) {
           return of(false);
         }
-        throwError(error);
+        return throwError(error);
        })
     );
   }

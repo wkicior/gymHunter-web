@@ -5,7 +5,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './auth/login/login.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import {MatButtonModule, MatFormFieldModule, MatInputModule, MatSelectModule} from "@angular/material";
+import {MatButtonModule, MatDialogModule, MatFormFieldModule, MatInputModule, MatSelectModule} from "@angular/material";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import { StoreModule } from '@ngrx/store';
 import {reducers, ROOT_REDUCER} from './reducers';
@@ -25,6 +25,8 @@ import { NewSubscriptionComponent } from './subscription/new-subscription/new-su
 import { EditSubscriptionComponent } from './subscription/edit-subscription/edit-subscription.component';
 import { TopNavigationComponent } from './top-navigation/top-navigation.component';
 import {clearState} from "./reducers/logout.metareducer";
+import { ErrorDialogComponent } from './error/error-dialog/error-dialog.component';
+import {HttpErrorInterceptor} from "./error/http-error-interceptor";
 
 @NgModule({
   declarations: [
@@ -34,7 +36,8 @@ import {clearState} from "./reducers/logout.metareducer";
     TrainingListComponent,
     NewSubscriptionComponent,
     EditSubscriptionComponent,
-    TopNavigationComponent
+    TopNavigationComponent,
+    ErrorDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -44,6 +47,7 @@ import {clearState} from "./reducers/logout.metareducer";
     MatFormFieldModule,
     MatInputModule,
     MatSelectModule,
+    MatDialogModule,
     MatButtonModule,
     FormsModule,
     ReactiveFormsModule,
@@ -66,10 +70,12 @@ import {clearState} from "./reducers/logout.metareducer";
       useClass: AuthInterceptor,
       multi: true
     },
+    { provide: HTTP_INTERCEPTORS, useClass: HttpErrorInterceptor, multi: true },
     {
       provide: ROOT_REDUCER,
       useValue: reducers},
   ],
+  entryComponents: [ErrorDialogComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
