@@ -15,6 +15,7 @@ import {SubscriptionsService} from "./subscriptions.service";
 import {selectClubId, selectSelectedTraining} from "../training/trainings.selectors";
 import {SubscriptionRequest} from "./subscription-request";
 import {selectAllSubscriptions} from "./subscriptions.selectors";
+import {GetTrainingsForSubscriptions} from "../training/trainings.actions";
 
 
 @Injectable()
@@ -30,6 +31,12 @@ export class SubscriptionsEffects {
     ofType<GetAllSubscriptions>(SubscriptionsAction.GetAllSubscriptions),
     switchMap(() => this.subscriptionsService.getAllSubscriptions()),
     switchMap((subs) => of (new GetAllSubscriptionsSuccess(subs)))
+  );
+
+  @Effect()
+  getAllSubscriptionsSuccess$ = this.actions$.pipe(
+    ofType<GetAllSubscriptionsSuccess>(SubscriptionsAction.GetAllSubscriptionsSuccess),
+    map(() => new GetTrainingsForSubscriptions())
   );
 
   @Effect()

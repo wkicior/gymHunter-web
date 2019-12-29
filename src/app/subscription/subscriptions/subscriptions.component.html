@@ -2,8 +2,8 @@
   <h1>My Subscriptions:</h1>
   <div class="subscription" *ngFor="let subscribedTraining of (subscribedTrainings$ | async)" (click)="subscriptionSelected(subscribedTraining.id)">
     <p *ngIf="subscribedTraining.training">{{subscribedTraining.training.activity.name}}</p>
-    <p>{{subscribedTraining.trainingHuntingSubscription.huntingDeadline}}</p>
     <p *ngIf="subscribedTraining.training">{{subscribedTraining.training.trainer.name}}</p>
+    <p>{{subscribedTraining.trainingHuntingSubscription.huntingDeadline}}</p>
     <p *ngIf="subscribedTraining.trainingHuntingSubscription.autoBookingDateTime">Autobooked</p>
     <p *ngIf="subscribedTraining.trainingHuntingSubscription.notificationOnSlotsAvailableSentDateTime">Notified</p>
   </div>
