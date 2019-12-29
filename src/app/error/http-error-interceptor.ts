@@ -3,6 +3,7 @@ import {HttpErrorResponse, HttpEvent, HttpHandler, HttpInterceptor, HttpRequest}
 import {Observable, throwError} from "rxjs";
 import {catchError} from "rxjs/operators";
 import {ErrorDialogService} from "./error-dialog/error-dialog.service";
+import {ErrorData} from "./error-data";
 
 @Injectable()
 export class HttpErrorInterceptor implements HttpInterceptor {
@@ -11,7 +12,7 @@ export class HttpErrorInterceptor implements HttpInterceptor {
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     return next.handle(req).pipe(
       catchError((error: HttpErrorResponse) => {
-        let data = {
+        let data: ErrorData = {
           reason: error && error.error && error.error.reason ? error.error.reason : '',
           status: error.status
         };

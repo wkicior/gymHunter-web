@@ -1,5 +1,6 @@
-import {Component, Inject, OnInit} from '@angular/core';
-import {MAT_DIALOG_DATA, MatDialogRef} from "@angular/material";
+import {Component, Inject} from '@angular/core';
+import {MAT_DIALOG_DATA} from "@angular/material";
+import {ErrorData} from "../error-data";
 
 @Component({
   selector: 'app-error-dialog',
@@ -7,15 +8,5 @@ import {MAT_DIALOG_DATA, MatDialogRef} from "@angular/material";
   styleUrls: ['./error-dialog.component.scss']
 })
 export class ErrorDialogComponent {
-  title = 'Angular-Interceptor';
-  constructor(@Inject(MAT_DIALOG_DATA) public data: string) {
-    console.log('bla');
-  }
-
-
-
-  // constructor(
-  //   public dialogRef: MatDialogRef<ErrorDialogComponent>,
-  //   @Inject(MAT_DIALOG_DATA) public data: any) {}
-
+  constructor(@Inject(MAT_DIALOG_DATA) public data: ErrorData) {}
 }
