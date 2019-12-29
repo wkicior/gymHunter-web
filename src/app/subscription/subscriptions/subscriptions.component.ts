@@ -4,6 +4,9 @@ import {State} from "../../reducers";
 import {GetAllSubscriptions} from "../subscriptions.actions";
 import {selectAllSubscriptions} from "../subscriptions.selectors";
 import {Router} from "@angular/router";
+import {GetTrainingsForSubscriptions} from "../../training/trainings.actions";
+import {selectSubscribedTrainings} from "../../training/trainings.selectors";
+import {SubscribedTrainingsService} from "../subscribed-trainings.service";
 
 @Component({
   selector: 'app-subscriptions',
@@ -12,12 +15,14 @@ import {Router} from "@angular/router";
 })
 export class SubscriptionsComponent implements OnInit {
 
-  constructor(private store: Store<State>, private router: Router) { }
+  constructor(private store: Store<State>, private router: Router, private subscribedTrainingsService: SubscribedTrainingsService) { }
 
-  subscriptions$ = this.store.select(selectAllSubscriptions);
+  //subscriptions$ = this.store.select(selectAllSubscriptions);
+  subscribedTrainings$ = this.subscribedTrainingsService.selectSubscribedTrainings();
 
   ngOnInit() {
-    this.store.dispatch(new GetAllSubscriptions());
+    //this.store.dispatch(new GetAllSubscriptions());
+    //this.subscriptions$.subscribe(() => this.store.dispatch(new GetTrainingsForSubscriptions()));
   }
 
   subscriptionSelected(id: string) {

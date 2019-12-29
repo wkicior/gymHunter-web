@@ -17,10 +17,14 @@ export interface ITraining {
   end_date: Date
 }
 
-export interface ITrainingResponse {
+export interface ITrainingsResponse {
   trainings: ITraining[];
 }
 
+
+export interface ITrainingResponse {
+  training: ITraining;
+}
 
 export class Training implements ITraining {
   activity: IActivity;

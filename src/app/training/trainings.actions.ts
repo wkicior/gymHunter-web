@@ -6,6 +6,8 @@ export enum TrainingsAction {
   GetTrainingsSuccess = '[Trainings] Get Trainings Success',
   GetTraining = '[Trainings] Get Training',
   GetTrainingSuccess = '[Trainings] Get Training Success',
+  GetTrainingsForSubscriptions = '[Trainings] Get Trainings For Subscriptions',
+  GetTrainingsForSubscriptionsSuccess = '[Trainings] Get Trainings For Subscriptions Success'
 }
 
 export class GetTrainings implements Action {
@@ -28,4 +30,14 @@ export class GetTrainingSuccess implements Action {
   constructor(public training: ITraining) {}
 }
 
-export type TrainingsActions = GetTrainings | GetTrainingsSuccess | GetTraining | GetTrainingSuccess
+export class GetTrainingsForSubscriptions implements Action {
+  public readonly type = TrainingsAction.GetTrainingsForSubscriptions;
+  constructor() {}
+}
+
+export class GetTrainingsForSubscriptionsSuccess implements Action {
+  public readonly type = TrainingsAction.GetTrainingsForSubscriptionsSuccess;
+  constructor(public trainings: ITraining[]) {}
+}
+
+export type TrainingsActions = GetTrainings | GetTrainingsSuccess | GetTraining | GetTrainingSuccess | GetTrainingsForSubscriptions | GetTrainingsForSubscriptionsSuccess
