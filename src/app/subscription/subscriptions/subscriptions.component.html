@@ -1,6 +1,6 @@
 <section>
   <h1>My Subscriptions:</h1>
-  <div class="subscription" *ngFor="let subscribedTraining of (subscribedTrainings$ | async)" (click)="subscriptionSelected(subscribedTraining.id)">
+  <div class="subscription" *ngFor="let subscribedTraining of (subscribedTrainings$ | async)" (click)="subscriptionSelected(subscribedTraining.trainingHuntingSubscription.id)">
     <p *ngIf="subscribedTraining.training">{{subscribedTraining.training.activity.name}}</p>
     <p *ngIf="subscribedTraining.training">{{subscribedTraining.training.trainer.name}}</p>
     <p>{{subscribedTraining.trainingHuntingSubscription.huntingDeadline}}</p>
