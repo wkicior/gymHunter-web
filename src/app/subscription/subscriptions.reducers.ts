@@ -18,6 +18,7 @@ export const subscriptionsReducers = (
         selectedSubscription: action.subscription
       }
     }
+    case SubscriptionsAction.ClearSelectedSubscriptionIfAny:
     case SubscriptionsAction.Subscribe: {
       return {
         ...state,

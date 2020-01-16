@@ -9,7 +9,8 @@ export enum SubscriptionsAction {
   Subscribe = '[Subscription] Subscribe',
   SubscribeSuccess = '[Subscription] Subscribe Success',
   DeleteSubscription = '[Subscription] Delete',
-  DeleteSubscriptionSuccess = '[Subscription] Delete Success'
+  DeleteSubscriptionSuccess = '[Subscription] Delete Success',
+  ClearSelectedSubscriptionIfAny = '[Subscription] Clear Selected Subscription If Any'
 }
 
 export class GetAllSubscriptions implements Action {
@@ -37,8 +38,13 @@ export class Subscribe implements Action {
 }
 
 export class SubscribeSuccess implements Action {
-  public readonly type = SubscriptionsAction.SubscribeSuccess
+  public readonly type = SubscriptionsAction.SubscribeSuccess;
   constructor(public subscription: ITrainingHuntingSubscription) {}
+}
+
+export class ClearSelectedSubscriptionIfAny implements Action {
+  public readonly type = SubscriptionsAction.ClearSelectedSubscriptionIfAny;
+  constructor() {}
 }
 
 export class DeleteSubscription implements Action {
@@ -60,3 +66,4 @@ export type SubscriptionsActions =
   | SubscribeSuccess
   | DeleteSubscription
   | DeleteSubscriptionSuccess
+  | ClearSelectedSubscriptionIfAny

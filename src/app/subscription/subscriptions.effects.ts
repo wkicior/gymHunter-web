@@ -6,6 +6,7 @@ import {map, switchMap, tap, withLatestFrom} from "rxjs/operators";
 import {of, throwError} from "rxjs";
 
 import {
+  ClearSelectedSubscriptionIfAny,
   DeleteSubscription, DeleteSubscriptionSuccess,
   GetAllSubscriptions,
   GetAllSubscriptionsSuccess, GetSubscription, GetSubscriptionSuccess, Subscribe, SubscribeSuccess,
@@ -53,7 +54,6 @@ export class SubscriptionsEffects {
     switchMap((subscription) => this.subscriptionsService.deleteSubscription(subscription.id)),
     map(deletedSubscription => new DeleteSubscriptionSuccess(deletedSubscription))
   );
-
 
   @Effect()
   createNewSubscription = this.actions$.pipe(
