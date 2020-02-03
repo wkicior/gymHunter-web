@@ -14,7 +14,8 @@ export interface ITraining {
   trainer: ITrainer;
   slotsAvailable: number;
   start_date: Date;
-  end_date: Date
+  end_date: Date;
+  bookings_open_at: Date;
 }
 
 export interface ITrainingsResponse {
@@ -33,6 +34,7 @@ export class Training implements ITraining {
   slotsAvailable: number;
   start_date: Date;
   trainer: ITrainer;
+  bookings_open_at: Date;
 
   static orderByStartDate() {
     return (t1, t2) => {
