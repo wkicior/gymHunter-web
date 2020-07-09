@@ -1,5 +1,5 @@
 import {FormControl, FormGroup, FormGroupDirective, NgForm, Validators} from "@angular/forms";
-import {ErrorStateMatcher} from "@angular/material";
+import { ErrorStateMatcher } from "@angular/material/core";
 
 export class LoginFailedErrorStateMatcher implements ErrorStateMatcher {
   isErrorState(control: FormControl | null, form: FormGroupDirective | NgForm | null): boolean {
