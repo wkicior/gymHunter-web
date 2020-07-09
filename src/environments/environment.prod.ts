@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  gymHunterEndpointUrl: 'https://167.172.183.167/api',
+  gymHunterEndpointUrl: 'https://161.35.222.25/api',
 };

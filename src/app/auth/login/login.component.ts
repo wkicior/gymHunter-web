@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Inject, OnInit} from '@angular/core';
 import {LogInForm} from "./login-form";
 import {State} from "../../reducers";
 import {select, Store} from "@ngrx/store";
@@ -6,6 +6,7 @@ import {Login} from "../auth.actions";
 import {selectIsAuthenticated, selectIsLoginFailed} from "../auth.selectors";
 import {Router} from "@angular/router";
 import {filter, take} from "rxjs/operators";
+import {GymHunterEndpointUrl} from "../../app.config";
 
 @Component({
   selector: 'app-login',
@@ -14,8 +15,11 @@ import {filter, take} from "rxjs/operators";
 })
 export class LoginComponent implements OnInit {
   loginForm = new LogInForm();
+  endpointUrl: string;
 
-  constructor(private store: Store<State>, private router: Router) { }
+  constructor(private store: Store<State>, private router: Router, @Inject(GymHunterEndpointUrl) private _endpointUrl) {
+    this.endpointUrl = _endpointUrl;
+  }
 
   isAuthenticated$ = this.store.pipe(select(selectIsAuthenticated));
   isLoginFailed$ = this.store.pipe(select(selectIsLoginFailed));
